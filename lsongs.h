@@ -18,5 +18,5 @@ struct song_node * rand_song(struct song_node *s);
 
 struct song_node * remove_song(struct song_node *s);
 
-struct song_ndoe * free_list(struct song_node *s);
+struct song_node * free_list(struct song_node *s);
 
