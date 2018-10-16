@@ -1,9 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "lsongs.h"
+#ifndef M_LIBRARY_H
+#define M_LIBRARY_H
 
 struct song_node * table[27];
-
 
 void add_song(struct song_node *s);
 
@@ -23,3 +21,4 @@ void delete_song(char *name);
 
 void clear_lib();
 
+#endif

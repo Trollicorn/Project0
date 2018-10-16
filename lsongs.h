@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-
+#ifndef L_SONGS_H
+#define L_SONGS_H
 
 struct song_node{ 
   char name[100];
@@ -24,3 +23,4 @@ struct song_node * remove_song(struct song_node *s);
 
 struct song_node * free_list(struct song_node *s);
 
+#endif
