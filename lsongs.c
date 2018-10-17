@@ -22,3 +22,7 @@ struct song_node * insert_order(struct song_node *s, char *n, char *a){
   while (strcmp(n, current->name) < 0)
     current = current->next;
 }
+
+void print_songs(struct song_node *s){
+	printf("%s, by %s", s->name, s->artist);
+}
