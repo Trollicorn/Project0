@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <string.h>
 #include "lsongs.h"
 #include "mlibrary.h"
 
@@ -41,22 +43,26 @@ void add_song(struct song node *s){
         //NEED CASE FOR GOES RIGHT IN FRONT (MUST SET TABLE[INDEX] TO IT)
 }
 
-struct song_node * search_song(char *song, char *art){
+struct song_node * search_song_lib(char *song, char *art){
         int index = get_index(art);
-        struct song_node here = table[index];
+/*        struct song_node here = table[index];
         while (here && strcmp(art,here->artist) + strcmp(song,here->name)){
                 here = here -> next;
         }
         return here;
+	*/
+	return search_song(table[index],song,art);
 }
 
-struct song_node * search_artist(char *art){
-        int index = get_index(art);
+struct song_node * search_artist_lib(char *art){
+/*        int index = get_index(art);
         struct song_node here = table[index];
         while (here && strcmp(art,here->artist) ){
                 here = here -> next;
         }
         return here;
+*/
+	return search_artist(table[index],art);
 }
 
 void print_entries(char c){
@@ -69,7 +75,7 @@ void print_entries(char c){
         print_songs(table[index]);
 }
 
-void print_songs(char *art){
+void print_artist(char *art){
         struct song_node s = search_artist(art);
         while (s->artist && ! strcmp(art, s->artist)){
                 printf("%s, by %s\n", s->name, s->artist);
@@ -84,12 +90,18 @@ void print_lib(){
 }
 
 void shuffle(){
-        //NEED STUFF
+	struct song_node temp;
+        srand(time(NULL));
+	for (int i = 0; i < 27; i++){
+		if (rand() % 26 < 5){
+			temp = rand_song(table[i]);
+				
+	}
 }
 
 void delete_song(char *song, char *art){
-        struct song_node temp = search_song(song,art);
-        free_list(temp);
+        int index = get_index(art);
+	remove_song(table[index],song,art);
 }
 
 void clear_lib(){
