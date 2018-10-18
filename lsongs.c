@@ -68,7 +68,8 @@ struct song_node * rand_song(struct song_node *s){
     temp = temp->next;
     len++;
   }
-  for(int i = 0; i < (rand() % len); i++){
+  int target = rand() % len;
+  for(int i = 0; i < target; i++){
     rand = rand->next;
   }
   return rand;
