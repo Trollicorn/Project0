@@ -95,7 +95,7 @@ void shuffle(){
 	for (int i = 0; i < 27; i++){
 		if (rand() % 26 < 5){
 			temp = rand_song(table[i]);
-				
+			printf("%s, by %s\n",temp->name,temp->artist);	
 	}
 }
 

@@ -7,8 +7,8 @@
 
 struct song_node * insert_front(struct song_node *s, char *n, char *a){
   struct song_node *temp = malloc(sizeof(struct song_node));
-  temp->name = n;
-  temp->artist = a;
+  strcpy(temp->name,n);
+  strcpt(temp->artist,n);
   temp->next = s;
   return temp;
 }
@@ -25,8 +25,8 @@ struct song_node * insert_order(struct song_node *s, char *n, char *a){
     current = current->next;
   }
   struct song_node *temp = malloc(sizeof(struct song_node));
-  temp->name = n;
-  temp->artist = a;
+  strcpy(temp->name,n);
+  strcpy(temp->artist,a);
   temp->next = current;
   prev->next = temp;
   return temp;
@@ -63,16 +63,16 @@ struct song_node * rand_song(struct song_node *s){
   srand(time(NULL));
   int len = 0;
   struct song_node *temp = s;
-  struct song_node *rand = s;
+  struct song_node *rando = s;
   while(temp){
     temp = temp->next;
     len++;
   }
   int target = rand() % len;
   for(int i = 0; i < target; i++){
-    rand = rand->next;
+    rando = rando->next;
   }
-  return rand;
+  return rando;
 }
 
 struct song_node * remove_song(struct song_node *s, char *n, char *a){
@@ -92,8 +92,9 @@ struct song_node * remove_song(struct song_node *s, char *n, char *a){
 }
 
 struct song_node * free_list(struct song_node *s){
-  while (s){
-    struct node *next = s->next;
+  struct song_node * next;
+	while (s){
+    next = s->next;
     free(s);
     s = next;
   }

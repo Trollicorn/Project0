@@ -1,3 +1,7 @@
+# This annoying crud
+*.swp
+.nfs
+
 # Prerequisites
 *.d
 
