@@ -21,20 +21,79 @@ void make_table(){
         }
 }
 
-
-
-void add_song(struct song node *s){
+int get_index(char *art){
         int index;
-        if (s->artist[0] >= 97 && s->artist[0] <= 122){
-                index = (s->artist[0] - 19) % 26;
+        if (art[0] >= 97 && s->art[0] <= 122){
+                index = (art[0] - 19) % 26;
         }else{
                 index = 26;
         }
+        return index;
+}
+
+void add_song(struct song node *s){
+        int index = get_index(s->artist);
         if (!table[index]){
                 table[index] = insert_front(table[index], s->name, s->artist);
                 return;
         }
-        table[index] = insert_order(table[index], s->name, s->artist);
+        insert_order(table[index], s->name, s->artist);
+        //NEED CASE FOR GOES RIGHT IN FRONT (MUST SET TABLE[INDEX] TO IT)
 }
-~                                                                                                                                                                       
-~                                                                                      }
+
+struct song_node * search_song(char *song, char *art){
+        int index = get_index(art);
+        struct song_node here = table[index];
+        while (here && strcmp(art,here->artist) + strcmp(song,here->name)){
+                here = here -> next;
+        }
+        return here;
+}
+
+struct song_node * search_artist(char *art){
+        int index = get_index(art);
+        struct song_node here = table[index];
+        while (here && strcmp(art,here->artist) ){
+                here = here -> next;
+        }
+        return here;
+}
+
+void print_entries(char c){
+        int index;
+        if (c >= 97 && c <= 122){
+                index = (c - 19) % 26;
+        }else{
+                index = 26;
+        }
+        print_songs(table[index]);
+}
+
+void print_songs(char *art){
+        struct song_node s = search_artist(art);
+        while (s->artist && ! strcmp(art, s->artist)){
+                printf("%s, by %s\n", s->name, s->artist);
+                s = s->next;
+        }
+}
+
+void print_lib(){
+        for (int i = 0; i < 27; i++){
+                print_songs(table[i]);
+        }
+}
+
+void shuffle(){
+        //NEED STUFF
+}
+
+void delete_song(char *song, char *art){
+        struct song_node temp = search_song(song,art);
+        free_list(temp);
+}
+
+void clear_lib(){
+        for (int i = 0; i < 27; i++){
+                free_list(table[i]);        
+        }
+}
