@@ -8,7 +8,7 @@
 struct song_node * insert_front(struct song_node *s, char *n, char *a){
   struct song_node *temp = malloc(sizeof(struct song_node));
   strcpy(temp->name,n);
-  strcpt(temp->artist,n);
+  strcpy(temp->artist,n);
   temp->next = s;
   return temp;
 }
