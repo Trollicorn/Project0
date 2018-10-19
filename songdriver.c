@@ -6,7 +6,7 @@
 
 int main() {
 
-  struct song_node *music;
+  struct song_node *music = NULL;
 //  struct song_node * table[27];
 
   make_table();
@@ -17,7 +17,9 @@ int main() {
   printf("Testing inserts...\n");
   
   music = insert_front(music, "thunderstruck", "ac/dc");
- // insert_order(music, "yellow ledbetter", "pearl jam");
+  print_node(music);
+  insert_order(music, "yellow ledbetter", "pearl jam");
+  print_node(music);
  /* insert_order(music, "even flow", "pearl jam");
   insert_order(music, "alive", "pearl jam");
   insert_order(music, "street spirit (fadeout)", "radiohead");

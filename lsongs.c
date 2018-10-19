@@ -8,32 +8,35 @@
 struct song_node * insert_front(struct song_node *s, char *n, char *a){
   struct song_node *temp = malloc(sizeof(struct song_node));
   strcpy(temp->name,n);
-  strcpy(temp->artist,n);
+  strcpy(temp->artist,a);
   temp->next = s;
   return temp;
 }
 
 struct song_node * insert_order(struct song_node *s, char *n, char *a){
-  struct song_node *prev = s;
+  struct song_node *prev = NULL;
   struct song_node *current = s; 
   while (strcmp(a, current->artist) < 0){
     prev = current;
     current = current->next;
   }
-  while (strcmp(n, current->name) < 0){
-    prev = current;
-    current = current->next;
+  if (strcmp(a, current->artist) == 0){
+  	while (strcmp(n, current->name) < 0){
+      prev = current;
+      current = current->next;
+    }
   }
   struct song_node *temp = malloc(sizeof(struct song_node));
   strcpy(temp->name,n);
   strcpy(temp->artist,a);
   temp->next = current;
-  prev->next = temp;
+  if (prev){
+	  prev->next = temp;
+  }
   return temp;
 }
 
 void print_node(struct song_node *s){
-  struct song_node *current = s;
   printf("%s: %s | ", s->artist, s->name);
 } 
 
