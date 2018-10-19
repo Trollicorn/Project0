@@ -53,14 +53,35 @@ int main() {
   printf("\nTesting print_node:\n");
   print_node(music);
   printf("\n====================================\n");
+
+  struct song_node *test = search_artist(music, "pink floyd");
   
   printf("\nTesting search_artist:\n");
   printf("looking for [pink floyd]\n");
-  print_songs(search_artist(music, "pink floyd"));
+  if(test){
+    print_songs(test);
+  }
+  else{
+    printf("Not found!");
+  }
+  
   printf("\nlooking for [pearl jam]\n");
-  print_songs(search_artist(music, "pearl jam"));
-  //printf("\nlooking for [potus]\n");
-  //print_songs(search_artist(music, "potus"));
+  test = search_artist(music, "pearl jam");
+  if(test){
+    print_songs(test);
+  }
+  else{
+    printf("Not found!");
+  }
+  
+  printf("\nlooking for [potus]\n");
+  test = search_artist(music, "potus");
+  if(test){
+    print_songs(test);
+  }
+  else{
+    printf("Not found!");
+  }
   printf("\n====================================\n");
   
   printf("\nTesting rand_song:\n");
