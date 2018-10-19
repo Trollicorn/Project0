@@ -5,7 +5,7 @@ void make_table();
 
 int get_index(char *art);
 
-void add_song(struct song_node *s);
+void add_song(char *song, char *art);
 
 struct song_node * search_song_lib(char *song, char *art);
 

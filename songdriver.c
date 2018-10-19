@@ -89,17 +89,53 @@ int main() {
   printf("List after being freed...\n");
   print_songs(music);
   printf("\n====================================\n");
-  /*
+  
+ 
+
+
+
   printf("\nMUSIC LIBRARY TESTS\n");
   printf("\n====================================\n");
 
+  add_song("thunderstruck", "ac/dc");
+  add_song("alive", "pearl jam");
+// add_song("even flow", "pearl jam");
+//  add_song("time", "pink floyd");
+//  add_song("peaches", "presidents of the united states of america");
+  add_song("paranoid android", "radiohead");
+//  add_song("street spirit (fade out)", "radiohead");
   printf("\nTesting print_lib:\n");
   print_lib();
   printf("\n====================================\n");
 
-  printf("\nTesting print_lib:\n");
-*/
-  
+  printf("\nTesting print_letter:\n");
+  print_entries('p');
+  printf("\n====================================\n");
+
+  printf("\nTesting find:\n");
+  printf("looking for [pearl jam: alive]\n");
+  print_node(search_song_lib("alive", "pearl jam"));
+  printf("\nlooking for [pearl jam: time]\n");
+//  search_song_lib("time", "pearl jam");
+  printf("\n");
+  printf("\n====================================\n");
+  //find artist
+
+  printf("\nTesting remove song:\n");
+  printf("removing [pearl jam: alive]\n");
+  print_lib();
+  printf("\n====================================\n");
+//OOOOOOOOF
+
+  printf("\nTesting clear lib:\n");
+  clear_lib();
+  print_lib();
+  printf("\n====================================\n");
+//OOOOF
+
+  printf("\nTesting shuffle:\n");
+  shuffle();
+  printf("\n====================================\n");
+
   return 0;
-  
 }

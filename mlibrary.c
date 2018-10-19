@@ -25,13 +25,13 @@ int get_index(char *art){
         return index;
 }
 
-void add_song(struct song_node *s){
-        int index = get_index(s->artist);
+void add_song(char *song, char *art){
+        int index = get_index(art);
         if (!table[index]){
-                table[index] = insert_front(table[index], s->name, s->artist);
+                table[index] = insert_front(table[index], song, art);
                 return;
         }
-        insert_order(table[index], s->name, s->artist);
+        insert_order(table[index], song, art);
         //NEED CASE FOR GOES RIGHT IN FRONT (MUST SET TABLE[INDEX] TO IT)
 }
 
@@ -95,6 +95,9 @@ void shuffle(){
 
 void delete_song(char *song, char *art){
         int index = get_index(art);
+        if (strcmp(table[index]->name,song) == 0 && strcmp(table[index]->artist, art) ){
+                
+        }
 	remove_song(table[index],song,art);
 }
 
