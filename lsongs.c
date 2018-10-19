@@ -67,7 +67,9 @@ struct song_node * search_song(struct song_node *s, char *n, char *a){
 
 struct song_node * search_artist(struct song_node *s, char *a){
   struct song_node *current = s;
-  while (strcmp(a, current->artist) != 0){
+  while(current){
+    if (strcmp(a, current->artist) == 0)
+      return current;
     current = current->next;
   }
   return current;
