@@ -32,10 +32,15 @@ struct song_node * insert_order(struct song_node *s, char *n, char *a){
   return temp;
 }
 
+void print_node(struct song_node *s){
+  struct song_node *current = s;
+  printf("%s: %s | ", s->artist, s->name);
+} 
+
 void print_songs(struct song_node *s){
   struct song_node *current = s;
   while(current){
-    printf("%s, by %s\n", s->name, s->artist);
+    printf("%s: %s | ", s->artist, s->name);
     current = current->next;
   }
 }

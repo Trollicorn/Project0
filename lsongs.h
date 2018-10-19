@@ -11,6 +11,8 @@ struct song_node * insert_front(struct song_node *s, char *n, char *a);
 
 struct song_node * insert_order(struct song_node *s, char *n, char *a);
 
+void print_node(struct song_node *s);
+
 void print_songs(struct song_node *s);
 
 struct song_node * search_song(struct song_node *s, char *n, char *a);
