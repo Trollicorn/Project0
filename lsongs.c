@@ -14,26 +14,32 @@ struct song_node * insert_front(struct song_node *s, char *n, char *a){
 }
 
 struct song_node * insert_order(struct song_node *s, char *n, char *a){
-  struct song_node *prev = NULL;
-  struct song_node *current = s; 
-  while (strcmp(a, current->artist) < 0){
-    prev = current;
-    current = current->next;
+
+  if(s == NULL || strcmp(a, s->artist) < 0 || (strcmp(a, s->artist) == 0 && strcmp(n, s->name) < 0)){
+    return insert_front(s, n, a);
   }
-  if (strcmp(a, current->artist) == 0){
-  	while (strcmp(n, current->name) < 0){
-      prev = current;
-      current = current->next;
-    }
-  }
+
+  struct song_node *prev = s;
+  struct song_node *current = s->next;
   struct song_node *temp = malloc(sizeof(struct song_node));
   strcpy(temp->name,n);
   strcpy(temp->artist,a);
-  temp->next = current;
-  if (prev){
-	  prev->next = temp;
+  
+  while (current && strcmp(a, current->artist) > 0){
+    prev = prev->next;
+    temp->next = current;
+    current = current->next;
   }
-  return temp;
+  if (strcmp(a, current->artist) == 0){
+    while (current && strcmp(n, current->name) > 0){
+      prev = prev->next;
+      temp->next = current;
+      current = current->next;
+    }
+  }
+  prev->next = temp;
+  temp->next = current;
+  return s;
 }
 
 void print_node(struct song_node *s){
@@ -43,7 +49,7 @@ void print_node(struct song_node *s){
 void print_songs(struct song_node *s){
   struct song_node *current = s;
   while(current){
-    printf("%s: %s | ", s->artist, s->name);
+    print_node(current);
     current = current->next;
   }
 }
@@ -68,7 +74,6 @@ struct song_node * search_artist(struct song_node *s, char *a){
 }
 
 struct song_node * rand_song(struct song_node *s){
-  srand(time(NULL));
   int len = 0;
   struct song_node *temp = s;
   struct song_node *rando = s;
@@ -76,7 +81,7 @@ struct song_node * rand_song(struct song_node *s){
     temp = temp->next;
     len++;
   }
-  int target = rand() % len;
+  int target = (rand() % (len));
   for(int i = 0; i < target; i++){
     rando = rando->next;
   }
@@ -96,18 +101,17 @@ struct song_node * remove_song(struct song_node *s, char *n, char *a){
   }
   prev->next = current->next;
   free(current);
-  return current;
+  return prev;
 }
 
 struct song_node * free_list(struct song_node *s){
-  struct song_node * next;
-	while (s){
-    next = s->next;
+  while(s){
+    struct song_node *next = s->next;
     free(s);
     s = next;
   }
-free(s);
- return s;
+  free(s);
+  return s;
 }
 
   
