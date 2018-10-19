@@ -5,18 +5,6 @@
 #include "lsongs.h"
 #include "mlibrary.h"
 
-void add_song(struct song node *s){
-	int l = 0;
-	while (l < 26){
-		if (s->artist[0] == 'a' + char(l)){
-			
-		}
-	}
-#include <stdio.h>
-#include <stdlib.h>
-#include "lsongs.h"
-#include "mlibrary.h"
-
 void make_table(){
         for (int i = 0; i < 27; i++){
                 table[i] = NULL;
@@ -25,7 +13,7 @@ void make_table(){
 
 int get_index(char *art){
         int index;
-        if (art[0] >= 97 && s->art[0] <= 122){
+        if (art[0] >= 97 && art[0] <= 122){
                 index = (art[0] - 19) % 26;
         }else{
                 index = 26;
@@ -33,7 +21,7 @@ int get_index(char *art){
         return index;
 }
 
-void add_song(struct song node *s){
+void add_song(struct song_node *s){
         int index = get_index(s->artist);
         if (!table[index]){
                 table[index] = insert_front(table[index], s->name, s->artist);
@@ -55,8 +43,8 @@ struct song_node * search_song_lib(char *song, char *art){
 }
 
 struct song_node * search_artist_lib(char *art){
-/*        int index = get_index(art);
-        struct song_node here = table[index];
+        int index = get_index(art);
+ /*       struct song_node here = table[index];
         while (here && strcmp(art,here->artist) ){
                 here = here -> next;
         }

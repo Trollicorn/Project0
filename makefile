@@ -15,5 +15,6 @@ run:
 	
 clean:
 	rm *.o
-	rm *.out
 
+cleaner:
+	rm *.out
