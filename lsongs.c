@@ -25,13 +25,13 @@ struct song_node * insert_order(struct song_node *s, char *n, char *a){
   strcpy(temp->name,n);
   strcpy(temp->artist,a);
   
-  while (current && strcmp(a, current->artist) > 0){
+  while (current && strcmp(a, current->artist) < 0){
     prev = prev->next;
     temp->next = current;
     current = current->next;
   }
   if (strcmp(a, current->artist) == 0){
-    while (current && strcmp(n, current->name) > 0){
+    while (current && strcmp(n, current->name) < 0){
       prev = prev->next;
       temp->next = current;
       current = current->next;
@@ -82,6 +82,9 @@ struct song_node * rand_song(struct song_node *s){
   while(temp){
     temp = temp->next;
     len++;
+  }
+  if (len == 0){
+  	return NULL;
   }
   int target = (rand() % (len));
   for(int i = 0; i < target; i++){

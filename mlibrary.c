@@ -86,9 +86,11 @@ void shuffle(){
 	struct song_node *temp;
         srand(time(NULL));
 	for (int i = 0; i < 27; i++){
-		if (rand() % 26 < 5){
+		if (rand() % 2 == 1){
 			temp = rand_song(table[i]);
-			printf("%s, by %s\n",temp->name,temp->artist);	
+                        if (temp){
+        			printf("%s, by %s\n",temp->name,temp->artist);	
+                        }
                 }
 	}
 }
@@ -96,13 +98,17 @@ void shuffle(){
 void delete_song(char *song, char *art){
         int index = get_index(art);
         if (strcmp(table[index]->name,song) == 0 && strcmp(table[index]->artist, art) ){
-                
+                struct song_node *temp = table[index]->next;
+                remove_song(table[index],song,art);
+                table[index] = temp;
+                return;
         }
 	remove_song(table[index],song,art);
 }
 
 void clear_lib(){
         for (int i = 0; i < 27; i++){
-                free_list(table[i]);        
+                free_list(table[i]);
+                table[i] = NULL;        
         }
 }
