@@ -5,15 +5,17 @@
 #include "mlibrary.h"
 
 int main() {
+/*
+  struct song_node *music;
 
-  struct struct_node *music;
+  make_table();
 
   printf("LINKED LIST TESTS\n");
   printf("====================================\n");
   
   printf("Testing inserts...\n");
-  
-  music = insert_front(music, "thunderstruck", "ac/dc");
+ 
+/*  music = insert_front(music, "thunderstruck", "ac/dc");
   insert_order(music, "yellow ledbetter", "pearl jam");
   insert_order(music, "even flow", "pearl jam");
   insert_order(music, "alive", "pearl jam");
@@ -71,8 +73,8 @@ int main() {
   printf("\n====================================\n");
 
   printf("\nTesting print_lib:\n");
-
+*/
   
-  
+  return 1;
   
 }
