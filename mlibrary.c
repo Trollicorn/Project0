@@ -64,7 +64,8 @@ void print_entries(char c){
 }
 
 void print_artist(char *art){
-        struct song_node s = search_artist(art);
+        int index = get_index(art);
+        struct song_node *s = search_artist(table[index],art);
         while (s->artist && ! strcmp(art, s->artist)){
                 printf("%s, by %s\n", s->name, s->artist);
                 s = s->next;
@@ -78,12 +79,13 @@ void print_lib(){
 }
 
 void shuffle(){
-	struct song_node temp;
+	struct song_node *temp;
         srand(time(NULL));
 	for (int i = 0; i < 27; i++){
 		if (rand() % 26 < 5){
 			temp = rand_song(table[i]);
 			printf("%s, by %s\n",temp->name,temp->artist);	
+                }
 	}
 }
 
