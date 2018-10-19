@@ -5,7 +5,11 @@
 #include "lsongs.h"
 #include "mlibrary.h"
 
+
+struct song_node * table[27];
+
 void make_table(){
+
         for (int i = 0; i < 27; i++){
                 table[i] = NULL;
         }

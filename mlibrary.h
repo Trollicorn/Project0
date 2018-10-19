@@ -1,7 +1,9 @@
 #ifndef M_LIBRARY_H
 #define M_LIBRARY_H
 
-struct song_node * table[27];
+void make_table();
+
+int get_index(char *art);
 
 void add_song(struct song_node *s);
 

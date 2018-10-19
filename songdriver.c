@@ -5,8 +5,9 @@
 #include "mlibrary.h"
 
 int main() {
-/*
+
   struct song_node *music;
+//  struct song_node * table[27];
 
   make_table();
 
@@ -14,10 +15,10 @@ int main() {
   printf("====================================\n");
   
   printf("Testing inserts...\n");
- 
-/*  music = insert_front(music, "thunderstruck", "ac/dc");
-  insert_order(music, "yellow ledbetter", "pearl jam");
-  insert_order(music, "even flow", "pearl jam");
+  
+  music = insert_front(music, "thunderstruck", "ac/dc");
+ // insert_order(music, "yellow ledbetter", "pearl jam");
+ /* insert_order(music, "even flow", "pearl jam");
   insert_order(music, "alive", "pearl jam");
   insert_order(music, "street spirit (fadeout)", "radiohead");
   insert_order(music, "paranoid android", "radiohead");
@@ -75,6 +76,6 @@ int main() {
   printf("\nTesting print_lib:\n");
 */
   
-  return 1;
+  return 0;
   
 }
